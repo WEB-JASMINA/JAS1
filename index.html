@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Магазин Эдельвейс</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8d7ff;
+        text-align: center;
+      }
+      .hidden-section {
+        display: none;
+      }
+      .product img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+      .product {
+        margin-bottom: 15px;
+      }
+      .order-total {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>"Эдельвейс" саркеч дүкөнүнө кош келдиңиз!</h1>
+      <div class="btn-group my-4">
+        <button class="btn btn-secondary" onclick="showSection('main')">
+          Негизги
+        </button>
+        <button class="btn btn-secondary" onclick="showSection('prices')">
+          Баалар
+        </button>
+        <button class="btn btn-secondary" onclick="showSection('social')">
+          Соц тармак
+        </button>
+        <button class="btn btn-secondary" onclick="showSection('contacts')">
+          Байланыш жана дарек
+        </button>
+      </div>
+
+      <!-- Главная -->
+      <div id="main" class="section">
+        <h2>Биздин кийимдер</h2>
+        <div class="row">
+          <div class="col-md-4 product">
+            <img src="jas1.jpeg" alt="Продукт 1" />
+            <p>Классикалык ачык түстөгү кийим</p>
+          </div>
+          <div class="col-md-4 product">
+            <img src="jas2.jpeg" alt="Продукт 2" />
+            <p>Классикалык көк түстөгү кийим</p>
+          </div>
+          <div class="col-md-4 product">
+            <img src="jas3.jpeg" alt="Продукт 3" />
+            <p>Классикалык токсары түстөгү кийим</p>
+          </div>
+          <div class="col-md-4 product">
+            <img src="jas4.jpeg" alt="Продукт 4" />
+            <p>Классикалык кызыл түстөгү кийим</p>
+          </div>
+          <div class="col-md-4 product">
+            <img src="jas5.jpeg" alt="Продукт 5" />
+            <p>Спорттук боз түстөгү кийим</p>
+          </div>
+          <div class="col-md-4 product">
+            <img src="jas6.jpeg" alt="Продукт 6" />
+            <p>Ачык кызыл түстөгү көйнөк</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Цены -->
+      <div id="prices" class="section hidden-section">
+        <h2>Баалар</h2>
+        <div>
+          <div>
+            <label for="item1">Ак костюм+шым (5500 сом): </label>
+            <input
+              type="number"
+              id="item1"
+              class="form-control"
+              min="0"
+              value="0"
+            />
+          </div>
+          <div>
+            <label for="item2">Көк костюм+шым (3700 сом): </label>
+            <input
+              type="number"
+              id="item2"
+              class="form-control"
+              min="0"
+              value="0"
+            />
+          </div>
+          <div>
+            <label for="item3">Токсары костюм+шым (3000 сом): </label>
+            <input
+              type="number"
+              id="item3"
+              class="form-control"
+              min="0"
+              value="0"
+            />
+          </div>
+          <div>
+            <label for="item4">Кызыл костюм+шым (3500 сом): </label>
+            <input
+              type="number"
+              id="item4"
+              class="form-control"
+              min="0"
+              value="0"
+            />
+          </div>
+          <div>
+            <label for="item5">Спорттук кийим (2000 сом): </label>
+            <input
+              type="number"
+              id="item5"
+              class="form-control"
+              min="0"
+              value="0"
+            />
+          </div>
+          <div>
+            <label for="item6">Ачык кызыл көйнөк (3500 сом): </label>
+            <input
+              type="number"
+              id="item6"
+              class="form-control"
+              min="0"
+              value="0"
+            />
+          </div>
+          <div class="my-3">
+            <label for="delivery">Жеткирүү: </label>
+            <select id="delivery" class="form-select">
+              <option value="150">Шаар ичинде (150 сом)</option>
+              <option value="250">Регион (250 сом)</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="calculateTotal()">
+            Баарын эсептөө
+          </button>
+          <p id="total" class="order-total"></p>
+          <a
+            id="order-link"
+            href="#"
+            class="btn btn-success mt-3"
+            style="display: none"
+            target="_blank"
+            >Буйрутма берүү</a
+          >
+        </div>
+      </div>
+
+      <!-- Соц сети -->
+      <div id="social" class="section hidden-section">
+        <h2>Соц тармак</h2>
+        <a
+          href="https://www.instagram.com"
+          class="btn btn-primary"
+          target="_blank"
+          >Instagram</a
+        >
+      </div>
+
+      <!-- Контакты -->
+      <div id="contacts" class="section hidden-section">
+        <h2>Байланыш жана дарек</h2>
+        <p>БИШКЕК ПАРК соода борбору, 2-этаж</p>
+        <p>+996558780903</p>
+      </div>
+    </div>
+
+    <script>
+      function showSection(sectionId) {
+        document.querySelectorAll(".section").forEach((section) => {
+          section.style.display = "none";
+        });
+        document.getElementById(sectionId).style.display = "block";
+      }
+
+      function calculateTotal() {
+        const prices = [5500, 3700, 3000, 3500, 2000, 3500];
+        let total = 0;
+
+        for (let i = 1; i <= 6; i++) {
+          const quantity = document.getElementById(`item${i}`).value || 0;
+          total += prices[i - 1] * parseInt(quantity);
+        }
+
+        const delivery = parseInt(document.getElementById("delivery").value);
+        total += delivery;
+
+        document.getElementById(
+          "total"
+        ).innerText = `Бардык сумма: ${total} сом`;
+
+        const orderLink = document.getElementById("order-link");
+        orderLink.style.display = "inline-block";
+        orderLink.href = `https://wa.me/996558780903?text=Сиздин%20суммаңыз:%20${total}%20сом`;
+      }
+
+      // Показываем Главную страницу при загрузке
+      document.getElementById("main").style.display = "block";
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
